@@ -162,7 +162,7 @@ class WebUIController extends AbstractController
 
         try {
             $message = $this->getMessageFromRequest($request);
-            $message = $message->withDomain($domain);
+            $message = $message->withDomain($domain. '+intl-icu');
             $message = $message->withLocale($locale);
             $this->validateMessage($message, ['Create']);
         } catch (MessageValidationException $e) {
@@ -190,7 +190,7 @@ class WebUIController extends AbstractController
 
         try {
             $message = $this->getMessageFromRequest($request);
-            $message = $message->withDomain($domain);
+            $message = $message->withDomain($domain. '+intl-icu');
             $message = $message->withLocale($locale);
             $this->validateMessage($message, ['Edit']);
         } catch (MessageValidationException $e) {
@@ -217,7 +217,7 @@ class WebUIController extends AbstractController
         try {
             $message = $this->getMessageFromRequest($request);
             $message = $message->withLocale($locale);
-            $message = $message->withDomain($domain);
+            $message = $message->withDomain($domain. '+intl-icu');
             $this->validateMessage($message, ['Delete']);
         } catch (MessageValidationException $e) {
             return new Response($e->getMessage(), Response::HTTP_BAD_REQUEST);
